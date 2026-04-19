@@ -2,6 +2,7 @@ version: '3'
 
 vars:
   RUN_CLI: 'frankenphp php-cli'
+  RUN_WEBSERVER: 'frankenphp php-server'
 
 tasks:
   setup-ini:
@@ -25,3 +26,7 @@ tasks:
     desc: 'Run composer'
     cmds:
       - '{{.RUN_CLI}} scripts/composer.phar {{.CLI_ARGS}}'
+  server:
+    desc: 'Start web server'
+    cmds:
+      - '{{.RUN_WEBSERVER}} -r public {{.CLI_ARGS}}'
