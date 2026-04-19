@@ -9,10 +9,11 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.495.0  # renovate: depName=aquaproj/aqua-registry
+  ref: v4.495.0 # renovate: depName=aquaproj/aqua-registry
 - name: local/frankenphp
   type: local
   path: frankenphp.yaml
 packages:
 - name: php/frankenphp@v1.12.2
   registry: local/frankenphp
+- name: go-task/task@v3.50.0

@@ -1,0 +1,10 @@
+version: '3'
+
+vars:
+  RUN_CLI: 'frankenphp php-cli'
+
+tasks:
+  setup-ini:
+    desc: 'Generate php.ini from current FrankenPHP'
+    cmds:
+      - '{{.RUN_CLI}} scripts/generate-ini.php php.ini'

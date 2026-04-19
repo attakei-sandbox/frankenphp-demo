@@ -1,0 +1,8 @@
+[php]
+extension_dir = <?= $franken->extensionDir(); ?>
+
+
+<?php foreach ($franken->getExtensions() as $name => $enabled) { ?>
+<?= $enabled ? '' : '; ' ?>extension = <?= $name ?>
+
+<?php } ?>
