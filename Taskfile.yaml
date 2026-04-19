@@ -25,7 +25,7 @@ tasks:
   composer:
     desc: 'Run composer'
     cmds:
-      - '{{.RUN_CLI}} scripts/composer.phar {{.CLI_ARGS}}'
+      - '{{.RUN_CLI}} composer.phar {{.CLI_ARGS}}'
   server:
     desc: 'Start web server'
     cmds:
