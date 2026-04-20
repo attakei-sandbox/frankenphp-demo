@@ -75,6 +75,11 @@ packages:
       - version_constraint: "true"
         asset: frankenphp-{{.OS}}-{{.Arch}}
         format: raw
+        files:
+          - name: frankenphp
+            src: frankenphp
+          - name: php
+            src: php
         windows_arm_emulation: true
         replacements:
           amd64: x86_64
