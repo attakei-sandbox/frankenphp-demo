@@ -9,26 +9,10 @@ dotenv:
   - '{{.FRANKENPHP_WORKDIR}}/.env'
 
 tasks:
-  demo:
-    cmd: echo $PATH
-  setup-workdir:
+  setup:
     desc: 'Generate php.ini from current FrankenPHP'
     cmds:
-      - '{{.RUN_CLI}} frankenphp-local/init.php {{.FRANKENPHP_WORKDIR}} frankenphp-local/settings.php'
-  setup-composer:
-    desc: 'Fetch composer'
-    cmds:
-      - |
-        {{.RUN_CLI}} -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-        {{.RUN_CLI}} -r "if (hash_file('sha384', 'composer-setup.php') === 'c8b085408188070d5f52bcfe4ecfbee5f727afa458b2573b8eaaf77b3419b0bf2768dc67c86944da1544f06fa544fd47') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
-        {{.RUN_CLI}} composer-setup.php --install-dir={{.FRANKENPHP_WORKDIR}}
-        {{.RUN_CLI}} -r "unlink('composer-setup.php');"
-      - mv {{.FRANKENPHP_WORKDIR}}/composer.phar {{.FRANKENPHP_WORKDIR}}/composer
-  setup:
-    desc: 'Set up all assets for workspace'
-    cmds:
-      - task: setup-workdir
-      - task: setup-composer
+      - '{{.RUN_CLI}} frankenphp-local/configure.php {{.FRANKENPHP_WORKDIR}} frankenphp-local/settings.php'
   cli:
     desc: 'Run CLI'
     cmds:

@@ -39,6 +39,22 @@ class WorkDir
       join($_DS, [$this->baseDir, 'php.ini']),
       ['workDir' => $this, 'settings' => $this->settings, 'frankenphp' => $this->frankenphp],
     );
+    // Get composer.pha
+    $proc = proc_open(
+      [
+        'frankenphp',
+        'php-cli',
+        join($_DS, [__DIR__, 'get-composer.php']),
+        $this->baseDir,
+      ],
+      [STDIN, STDOUT, STDOUT],
+      $pipes,
+      null,
+      $_ENV + [
+        'PHPRC' => join($_DS, [$this->baseDir, 'php.ini']),
+      ]
+    );
+    proc_close($proc);
     // Composer executable
     writeTemplate(
       'templates/composer.cmd.phpt',
