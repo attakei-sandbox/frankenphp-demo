@@ -8,8 +8,8 @@ if (count($argv) < 3) {
 }
 
 $frankenphp = FrankenPHP::forAqua();
-$settings = include(realpath($argv[2]));
-$workDir = new WorkDir(realpath($argv[1]), $frankenphp, $settings);
+$settings = include(join(DIRECTORY_SEPARATOR, [getcwd(), $argv[2]]));
+$workDir = new WorkDir(join(DIRECTORY_SEPARATOR, [getcwd(), $argv[1]]), $frankenphp, $settings);
 
 $workDir->create();
 
